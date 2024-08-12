@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="/dist/aframe-particle-system-component.js"></script>
+  </head>
+  <body>    
+    <a-scene color="white">
+
+      <a-assets>
+        <img id="ground" src="ground.jpg"></img>
+        <img id="sky-texture" src="sky.png">
+        <a-asset-item id="model" src="Dancing Alien.glb" ></a-asset-item>
+        <a-asset-item id="chair" src="chair.glb" ></a-asset-item>
+        <audio id="background" src="background.mp3"></audio>
+      </a-assets>
+
+      <a-plane src="#ground" height="10" width="10" rotation="-90 0 0"></a-plane>
+      <a-sky src="#sky-texture"></a-sky>
+
+      <a-entity id="childbox" gltf-model="#model" position="0 0 2" color="blue"
+       animation="property:rotation.y;from:0;to:360;
+       dur:2000;dir:normal;loop:true;easing:linear;">
+      </a-entity> 
+
+      <a-entity id="chairpos" gltf-model="#chair" position="0 0.0 -3"></a-entity>
+      <a-entity position="0 2.25 -15" particle-system="preset: snow; particleCount: 5000"></a-entity>
+      <a-sound src="#background" autoplay="true"></a-sound>
+      <a-light type="point" target="#chairpos" color="#007DF9"  position="0 0.75 -3">
+      <a-light type="point" target="#childbox" color="#007DF9"  position="-0.5 1 1">
+      </a-light>
+
+      <a-text 
+  value="Welcome Hack Clubbers"
+  color="#white"
+  align="center"
+  position="0 2 -3"
+  scale="1.5 1.5 1.5"></a-text>
+    </a-scene>
+
+  </body>
+</html>
